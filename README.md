@@ -1,4 +1,4 @@
-# FileBot Installer
+# FileBot NSIS Installer
 [![Github Releases](https://img.shields.io/github/downloads/filebot/filebot-installer/total.svg)](https://github.com/filebot/filebot-installer/releases)
 [![GitHub release](https://img.shields.io/github/release/filebot/filebot-installer.svg)](https://github.com/filebot/filebot-installer/releases)
 
