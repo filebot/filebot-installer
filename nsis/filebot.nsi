@@ -130,12 +130,12 @@ Section MAIN
 	${if} $MSI_STATUS == "0"
 		DetailPrint "Optimizing..."
 		nsExec::ExecToLog `"C:\Program Files\FileBot\filebot.exe" -script "g:println Settings.applicationIdentifier; println 'JRE: '+Settings.javaRuntimeIdentifier; println 'JVM: '+(com.sun.jna.Platform.is64Bit() ? 64 : 32)+'-bit '+System.getProperty('java.vm.name'); java.util.prefs.Preferences.userRoot(); CacheManager.getInstance().clearAll(); MediaDetection.warmupCachedResources();" --log OFF`
-		ExecShell "open" "https://www.filebot.net/getting-started/index.html"
-		ExecShell "open" "https://www.filebot.net/manual.html"
+		ExecShell "open" "http://www.filebot.net/getting-started/index.html"
+		ExecShell "open" "http://www.filebot.net/manual.html"
 		DetailPrint "Done."
 	${else}
 		DetailPrint "msiexec error $MSI_STATUS"
-		ExecShell "open" "https://www.filebot.net/files/"
+		ExecShell "open" "http://www.filebot.net/files/"
 		${if} ${RunningX64}
 			DetailPrint "Installation failed. Please download the x64 msi package manually."
 		${else}

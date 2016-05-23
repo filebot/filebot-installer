@@ -2,4 +2,4 @@ del FileBot-setup.exe
 
 makensis filebot.nsi
 
-signtool sign /t http://timestamp.verisign.com/scripts/timstamp.dll /v /a FileBot-setup.exe
+signtool sign /fd SHA256 /t http://time.certum.pl/ /v /a FileBot-setup.exe
