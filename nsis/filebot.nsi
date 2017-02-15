@@ -121,11 +121,11 @@ Section MAIN
 	DetailPrint "Downloading latest version..."
 
 	${if} ${RunningX64}
-		inetc::get /RESUME /USERAGENT "nsis" /CAPTION "Downloading FileBot (64-bit)" "https://app.filebot.net/download.php?type=msi&arch=x64" "$PLUGINSDIR\FileBot.msi" /END
-		inetc::get /TOSTACK /SILENT /USERAGENT "nsis" /CAPTION "FileBot MSI Installer Hash (64-bit)" "https://raw.githubusercontent.com/filebot/filebot-installer/master/hash/x64.msi.sha256" /END
+		inetc::get /RESUME /NOCANCEL /USERAGENT "nsis" /CAPTION "Downloading FileBot (64-bit)" "https://app.filebot.net/download.php?type=msi&arch=x64" "$PLUGINSDIR\FileBot.msi" /END
+		inetc::get /TOSTACK /SILENT /NOCANCEL /USERAGENT "nsis" /CAPTION "FileBot MSI Installer Hash (64-bit)" "https://raw.githubusercontent.com/filebot/filebot-installer/master/hash/x64.msi.sha256" /END
 	${else}
-		inetc::get /RESUME /USERAGENT "nsis" /CAPTION "Downloading FileBot (32-bit)" "https://app.filebot.net/download.php?type=msi&arch=x86" "$PLUGINSDIR\FileBot.msi" /END
-		inetc::get /TOSTACK /SILENT /USERAGENT "nsis" /CAPTION "FileBot MSI Installer Hash (32-bit)" "https://raw.githubusercontent.com/filebot/filebot-installer/master/hash/x86.msi.sha256" /END
+		inetc::get /RESUME /NOCANCEL /USERAGENT "nsis" /CAPTION "Downloading FileBot (32-bit)" "https://app.filebot.net/download.php?type=msi&arch=x86" "$PLUGINSDIR\FileBot.msi" /END
+		inetc::get /TOSTACK /SILENT /NOCANCEL /USERAGENT "nsis" /CAPTION "FileBot MSI Installer Hash (32-bit)" "https://raw.githubusercontent.com/filebot/filebot-installer/master/hash/x86.msi.sha256" /END
 	${endif}
 
 	Pop $EXPECTED_HASH	# OK
