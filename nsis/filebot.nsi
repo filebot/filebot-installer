@@ -4,6 +4,8 @@
 
 !define PRODUCT_PROPER_NAME                "FileBot"
 !define INSTALLER_EXE_NAME                 "FileBot-setup.exe"
+!define WINDOWS_10                         "Windows 10"
+
 
 !define OPTION_USE_MUI_2
 
@@ -40,6 +42,9 @@ ShowUnInstDetails show
 ;--------------------------------
 !include "MUI2.nsh"
 !include "x64.nsh"
+
+!include "StrFunc.nsh"
+${StrLoc}
 
 
 ;--------------------------------
@@ -93,12 +98,26 @@ LangString Section_Name_MainProduct    ${LANG_ENGLISH} "${PRODUCT_PROPER_NAME}"
 ;---------------------------
 ; Install sections
 ;---------------------------
+Var WINDOWS_EDITION
+Var WINDOWS_EDITION_INDEX
 Var EXPECTED_HASH
 Var ACTUAL_HASH
 Var MSI_STATUS
 
 
 Section MAIN
+	ReadRegStr "$WINDOWS_EDITION" HKLM "SOFTWARE\Microsoft\Windows NT\CurrentVersion" "ProductName"
+	DetailPrint "FileBot for $WINDOWS_EDITION"
+
+	${StrLoc} $WINDOWS_EDITION_INDEX "$WINDOWS_EDITION" "${WINDOWS_10}" ">"
+	${if} $WINDOWS_EDITION_INDEX == 0
+		ExecShell "open" "ms-windows-store://pdp/?ProductId=9NBLGGH52T9X"
+		DetailPrint "The legacy installer for Windows 7 and 8 cannot be used on Windows 10 or higher."
+		DetailPrint "Please purchase FileBot on the Windows Store."
+		Abort
+	${endif}
+
+
 	DetailPrint "Downloading latest version..."
 
 	${if} ${RunningX64}
