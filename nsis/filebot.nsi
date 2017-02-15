@@ -111,7 +111,7 @@ Section MAIN
 
 	${StrLoc} $WINDOWS_EDITION_INDEX "$WINDOWS_EDITION" "${WINDOWS_10}" ">"
 	${if} $WINDOWS_EDITION_INDEX == 0
-		ExecShell "open" "ms-windows-store://pdp/?ProductId=9NBLGGH52T9X"
+		ExecShell "open" "ms-windows-store://pdp/?ProductId=9NBLGGH52T9X?cid=NSIS"
 		DetailPrint "The legacy installer for Windows 7 and 8 cannot be used on Windows 10 or higher."
 		DetailPrint "Please purchase FileBot on the Windows Store."
 		Abort
